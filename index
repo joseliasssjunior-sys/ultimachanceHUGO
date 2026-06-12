@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Última chance de Hugo CFO UEMA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #16213e;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #a2a2bd;
+        }
+
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background-color: #0f3460;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-box span {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .time-box .label {
+            font-size: 1em;
+            font-weight: normal;
+            color: #e94560;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .time-box { min-width: 80px; padding: 15px; }
+            .time-box span { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Última chance de Hugo CFO UEMA</h1>
+        <p>A prova será no dia 30 de Novembro de 2026. Foco total!</p>
+        
+        <div id="countdown">
+            <div class="time-box">
+                <span id="days">00</span>
+                <span class="label">Dias</span>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <span class="label">Horas</span>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <span class="label">Minutos</span>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <span class="label">Segundos</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define a data final: 30 de Novembro de 2026 à meia-noite
+        const dataDaProva = new Date("Nov 30, 2026 00:00:00").getTime();
+
+        // Atualiza a contagem a cada 1 segundo (1000 milissegundos)
+        const atualizaContagem = setInterval(function() {
+
+            // Pega a data e hora atuais
+            const agora = new Date().getTime();
+
+            // Encontra a diferença entre a data da prova e agora
+            const distancia = dataDaProva - agora;
+
+            // Cálculos matemáticos para dias, horas, minutos e segundos
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Mostra o resultado nos elementos do HTML (adiciona um '0' na frente se for menor que 10)
+            document.getElementById("days").innerHTML = dias < 10 ? "0" + dias : dias;
+            document.getElementById("hours").innerHTML = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutes").innerHTML = minutos < 10 ? "0" + minutos : minutos;
+            document.getElementById("seconds").innerHTML = segundos < 10 ? "0" + segundos : segundos;
+
+            // Se a contagem terminar, exibe uma mensagem
+            if (distancia < 0) {
+                clearInterval(atualizaContagem);
+                document.getElementById("countdown").innerHTML = "<h2>A HORA CHEGOU! BOA PROVA, HUGO!</h2>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
